@@ -14,7 +14,7 @@ env:
     - DOCKER_IMAGE=fedora:26
 
 before_deploy:
-    - openssl aes-256-cbc -K $encrypted_2e8b57d1cb90_key -iv $encrypted_2e8b57d1cb90_iv -in .copr.enc -out .copr -d
+    - openssl aes-256-cbc -K $encrypted_2a06824dcee9_key -iv $encrypted_2a06824dcee9_iv -in .copr.enc -out .copr -d
 
 deploy:
     skip_cleanup: true
