@@ -17,7 +17,7 @@
 This github repository neither hosts nor provide Magics sources, it's meant to
 host (unofficial) convenience files for Fedora and CentOs rpm packaging.
 
-See https://software.ecmwf.int/wiki/display/EMOS/Emoslib
+See https://software.ecmwf.int/wiki/display/MAGP/Magics
 
 ## License
 
