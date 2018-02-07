@@ -113,29 +113,30 @@ popd
 rm -rf $RPM_BUILD_ROOT
 pushd build
 %make_install
+
+pushd %{buildroot}%{_libdir}
+for l in *.so
+do
+    mv $l $l.3.0.0
+    ln -s $l.3.0.0 $l.3
+    ln -s $l.3.0.0 $l
+done
+
 popd
 
 
 %files
 %defattr(-,root,root)
-%{_bindir}/magml
-%{_bindir}/magmlx
-%{_bindir}/magjson
-%{_bindir}/magjsonx
-%{_bindir}/magicsCompatibilityChecker
-%{_bindir}/metgram
-%{_bindir}/metgram.sh
-%{_bindir}/metgramx
+%{_bindir}/*
 %{_datadir}/magics
+%{_libdir}/*.so.3*
 
 %files devel
 %defattr(-,root,root)
 %{_includedir}/magics/*
 %{_libdir}/pkgconfig/magics.pc
-%{_libdir}/libMagPlus.so
-%{_libdir}/libMagPlusDouble.so
-%{_libdir}/libMagPlusSingle.so
-%{_libdir}/libMagWrapper.a
+%{_libdir}/*.so
+%{_libdir}/*.a
 
 
 %files -n python3-%{name}
