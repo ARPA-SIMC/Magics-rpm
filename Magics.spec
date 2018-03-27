@@ -13,12 +13,14 @@ Source0:        https://software.ecmwf.int/wiki/download/attachments/3473464/%{n
 License:        Apache License, Version 2.0
 
 BuildRequires:  gcc-c++
+BuildRequires:  gcc-gfortran
 BuildRequires:  cmake
-BuildRequires:  qt5-devel
+BuildRequires:  qt5-qtbase-devel
 BuildRequires:  proj-devel
 BuildRequires:  libgeotiff-devel
 BuildRequires:  swig
 BuildRequires:  perl-XML-Parser
+BuildRequires:  perl-Data-Dumper
 BuildRequires:  eccodes-devel
 BuildRequires:  cairo-devel
 BuildRequires:  pango-devel
@@ -31,9 +33,10 @@ BuildRequires:  netcdf-cxx-devel
 BuildRequires:  jasper-devel
 BuildRequires:  gd-devel
 BuildRequires:  boost-devel
+BuildRequires:  git
 BuildRequires:  %{python3_vers}-devel
 BuildRequires:  %{python3_vers}-numpy
-
+BuildRequires:  %{python3_vers}-jinja2
 
 
 %description
