@@ -5,7 +5,7 @@
 %endif
 
 Name:           Magics
-Version:        3.0.0
+Version:        3.0.2
 Release:        1%{dist}
 Summary:        Library and tools to visualize meteorological data and statistics
 URL:            http://www.ecmwf.int/products/data/software/magics++.html
@@ -32,11 +32,14 @@ BuildRequires:  netcdf-devel
 BuildRequires:  netcdf-cxx-devel
 BuildRequires:  jasper-devel
 BuildRequires:  gd-devel
+BuildRequires:  fftw-devel
 BuildRequires:  boost-devel
 BuildRequires:  git
 BuildRequires:  %{python3_vers}-devel
 BuildRequires:  %{python3_vers}-numpy
 BuildRequires:  %{python3_vers}-jinja2
+# Apparently only required for CentOs
+BuildRequires:  openjpeg2-devel
 
 
 %description
@@ -109,7 +112,7 @@ popd
 
 %check
 pushd build
-make test
+CTEST_OUTPUT_ON_FAILURE=1 make test
 popd
 
 %install
@@ -148,6 +151,9 @@ popd
 %{python3_sitearch}/*
 
 %changelog
+* Tue Apr 17 2018 Daniele Branchini <dbranchini@arpae.it> - 3.0.2-1
+- Version 3.0.2
+
 * Wed Feb  7 2018 Emanuele Di Giacomo <edigiacomo@arpae.it> - 3.0.0-1
 - Version 3.0.0
 
