@@ -87,6 +87,9 @@ Python modules for Magics - The library and tools to visualize meteorological da
 
 %build
 
+# travis CI doesn't really like long logs
+%undefine verbose
+
 mkdir build
 pushd build
 
@@ -112,7 +115,9 @@ popd
 
 %check
 pushd build
-CTEST_OUTPUT_ON_FAILURE=1 make test
+# MAGPLUS_HOME is needed for the tests to work, see:
+# https://software.ecmwf.int/wiki/display/MAGP/Installation+Guide
+MAGPLUS_HOME=%{buildroot} CTEST_OUTPUT_ON_FAILURE=1 make test
 popd
 
 %install
