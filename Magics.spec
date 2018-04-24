@@ -113,8 +113,6 @@ pushd build
     -DENABLE_PYTHON=ON \
     -DPYTHON_EXECUTABLE=%{__python3}
 
-export LD_LIBRARY_PATH:=%{builddir}/build/lib:$(LD_LIBRARY_PATH)
-
 %{make_build}
 popd
 
