@@ -5,7 +5,7 @@
 %endif
 
 Name:           Magics
-Version:        3.0.2
+Version:        3.0.3
 Release:        1%{dist}
 Summary:        Library and tools to visualize meteorological data and statistics
 URL:            http://www.ecmwf.int/products/data/software/magics++.html
@@ -157,6 +157,9 @@ popd
 %{python3_sitearch}/*
 
 %changelog
+* Tue Apr 24 2018 Daniele Branchini <dbranchini@arpae.it> - 3.0.3-1
+- Version 3.0.3
+
 * Tue Apr 17 2018 Daniele Branchini <dbranchini@arpae.it> - 3.0.2-1
 - Version 3.0.2
 
