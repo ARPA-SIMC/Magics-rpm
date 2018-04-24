@@ -1,0 +1,36 @@
+diff -up python/Magics.py.in.orig python/Magics.py.in
+--- python/Magics.py.in.orig	2018-04-24 16:24:53.896107691 +0200
++++ python/Magics.py.in	2018-04-24 16:50:48.135792575 +0200
+@@ -10,17 +10,28 @@
+ import ctypes
+ import ctypes.util
+ import sys
++import os
+ 
+ import numpy as np
+ from numpy.ctypeslib import ndpointer
+ from functools import partial
+ 
+-lib = ctypes.util.find_library("MagPlus")
+ 
++lib = None
++
++# First, search in LD_LIBRARY_PATH
++for d in os.environ.get("LD_LIBRARY_PATH", "").split(":"):
++    p = os.path.join(d, "libMagPlus.so")
++    if os.path.exists(p)
++        lib = path
++
++# Then, search in system directory
++if lib is None:
++    lib = ctypes.util.find_library("MagPlus")
++
++# Finally, raise exception if the library is missing
+ if lib is None:
+-    lib = "@CMAKE_INSTALL_PREFIX@/@INSTALL_LIB_DIR@/libMagPlus@CMAKE_SHARED_LIBRARY_SUFFIX@"
+-    if lib is None:
+-      lib = "@CMAKE_BINARY_DIR@/lib/libMagPlus@CMAKE_SHARED_LIBRARY_SUFFIX@"
++    raise Exception("Cannot find libMagPlus.so")
+ 
+ dll  = ctypes.CDLL(lib)
+ libc = ctypes.CDLL(ctypes.util.find_library("c"))
