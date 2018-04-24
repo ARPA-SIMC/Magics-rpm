@@ -1,7 +1,7 @@
 diff -up python/Magics.py.in.orig python/Magics.py.in
 --- python/Magics.py.in.orig	2018-04-24 16:24:53.896107691 +0200
-+++ python/Magics.py.in	2018-04-24 16:50:48.135792575 +0200
-@@ -10,17 +10,28 @@
++++ python/Magics.py.in	2018-04-24 18:30:33.771219330 +0200
+@@ -10,17 +10,29 @@
  import ctypes
  import ctypes.util
  import sys
@@ -20,6 +20,7 @@ diff -up python/Magics.py.in.orig python/Magics.py.in
 +    p = os.path.join(d, "libMagPlus.so")
 +    if os.path.exists(p):
 +        lib = p
++        break
 +
 +# Then, search in system directory
 +if lib is None:
