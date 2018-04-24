@@ -8,28 +8,28 @@ then
     pkgcmd="yum"
     builddep="yum-builddep"
     sed -i '/^tsflags=/d' /etc/yum.conf
-    yum install -qy epel-release
-    yum install -qy @buildsys-build
-    yum install -qy yum-utils
-    yum install -qy git
-    yum install -qy rpmdevtools
-    yum install -qy yum-plugin-copr
-    yum install -qy pv
-    yum copr enable -qy simc/stable
+    yum install -q -y epel-release
+    yum install -q -y @buildsys-build
+    yum install -q -y yum-utils
+    yum install -q -y git
+    yum install -q -y rpmdevtools
+    yum install -q -y yum-plugin-copr
+    yum install -q -y pv
+    yum copr enable -q -y simc/stable
 elif [[ $image =~ ^fedora: ]]
 then
     pkgcmd="dnf"
     builddep="dnf builddep"
     sed -i '/^tsflags=/d' /etc/dnf/dnf.conf
-    dnf install -qy @buildsys-build
-    dnf install -qy 'dnf-command(builddep)'
-    dnf install -qy git
-    dnf install -qy rpmdevtools
-    dnf install -qy pv
-    dnf copr enable -qy simc/stable
+    dnf install -q -y @buildsys-build
+    dnf install -q -y 'dnf-command(builddep)'
+    dnf install -q -y git
+    dnf install -q -y rpmdevtools
+    dnf install -q -y pv
+    dnf copr enable -q -y simc/stable
 fi
 
-$builddep -y Magics.spec
+$builddep -q -y Magics.spec
 
 if [[ $image =~ ^fedora: || $image =~ ^centos: ]]
 then
