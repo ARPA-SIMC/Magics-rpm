@@ -122,7 +122,7 @@ popd
 pushd build
 # MAGPLUS_HOME is needed for the tests to work, see:
 # https://software.ecmwf.int/wiki/display/MAGP/Installation+Guide
-MAGPLUS_HOME=%{buildroot} CTEST_OUTPUT_ON_FAILURE=1 ctest
+MAGPLUS_HOME=%{buildroot} CTEST_OUTPUT_ON_FAILURE=1 LD_LIBRARY_PATH=%{buildroot}%{_libdir} ctest
 popd
 
 %install
