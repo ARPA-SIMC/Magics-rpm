@@ -36,7 +36,8 @@ then
     pkgname="$(rpmspec -q --qf="Magics-%{version}-%{release}\n" Magics.spec | head -n1)"
     mkdir -p ~/rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
     cp Magics.spec ~/rpmbuild/SPECS/
-    spectool -g -R ~/rpmbuild/SPECS/Magics.spec
+    cp *.patch ~/rpmbuild/SOURCES/
+    spectool -g -R -S ~/rpmbuild/SPECS/Magics.spec
     set +x
     rpmbuild -ba ~/rpmbuild/SPECS/Magics.spec 2>&1 | pv -q -L 3k
     find ~/rpmbuild/{RPMS,SRPMS}/ -name "${pkgname}*rpm" -exec cp -v {} . \;
