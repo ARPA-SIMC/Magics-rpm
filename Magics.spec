@@ -4,9 +4,11 @@
 %define python3_vers python3
 %endif
 
+%global releaseno 1
+
 Name:           Magics
 Version:        3.0.3
-Release:        1%{dist}
+Release:        %{releaseno}%{dist}
 Summary:        Library and tools to visualize meteorological data and statistics
 URL:            http://www.ecmwf.int/products/data/software/magics++.html
 Source0:        https://software.ecmwf.int/wiki/download/attachments/3473464/%{name}-%{version}-Source.tar.gz
