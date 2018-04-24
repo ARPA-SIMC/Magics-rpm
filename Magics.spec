@@ -118,14 +118,12 @@ pushd build
 %{make_build}
 popd
 
-#check
-# temporarily disabled:
-# see https://github.com/ARPA-SIMC/Magics-rpm/issues/1
-#pushd build
-## MAGPLUS_HOME is needed for the tests to work, see:
-## https://software.ecmwf.int/wiki/display/MAGP/Installation+Guide
-#MAGPLUS_HOME=%{buildroot} CTEST_OUTPUT_ON_FAILURE=1 ctest
-#popd
+%check
+pushd build
+# MAGPLUS_HOME is needed for the tests to work, see:
+# https://software.ecmwf.int/wiki/display/MAGP/Installation+Guide
+MAGPLUS_HOME=%{buildroot} CTEST_OUTPUT_ON_FAILURE=1 ctest
+popd
 
 %install
 rm -rf $RPM_BUILD_ROOT
