@@ -20,6 +20,9 @@ host (unofficial) convenience files for Fedora and CentOs rpm packaging.
 
 See https://software.ecmwf.int/wiki/display/MAGP/Magics
 
+Patches are adapted from debian package.
+For more info see: https://tracker.debian.org/pkg/magics++
+
 ## License
 
 Apache 2.0
@@ -28,3 +31,6 @@ Apache 2.0
 
 * Emanuele Di Giacomo <edigiacomo@arpae.it>
 * Daniele Branchini <dbranchini@arpae.it>
+
+For debian patches:
+* Alastair McKinstry <mckinstry@debian.org>

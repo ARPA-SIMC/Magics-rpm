@@ -1,0 +1,35 @@
+Author: Alastair McKinstry <mckinstry@debian.org>
+Description: Remove ksh, as unsupported in Debian right now
+Last-Updated: 2016-11-13
+Forwarded: not-needed
+
+Index: magics++-3.0.0/apps/MagMLInterpretor/magjson-script.in
+===================================================================
+--- magics++-3.0.0.orig/apps/MagMLInterpretor/magjson-script.in
++++ magics++-3.0.0/apps/MagMLInterpretor/magjson-script.in
+@@ -1,4 +1,4 @@
+-#!/bin/ksh
++#!/bin/sh
+ #set -x
+ 
+ # Platform dependent variables
+Index: magics++-3.0.0/apps/MagMLInterpretor/magml-script.in
+===================================================================
+--- magics++-3.0.0.orig/apps/MagMLInterpretor/magml-script.in
++++ magics++-3.0.0/apps/MagMLInterpretor/magml-script.in
+@@ -1,4 +1,4 @@
+-#!/bin/ksh
++#!/bin/sh
+ #set -x
+ 
+ # Platform dependent variables
+Index: magics++-3.0.0/apps/metgram/metgram-script.in
+===================================================================
+--- magics++-3.0.0.orig/apps/metgram/metgram-script.in
++++ magics++-3.0.0/apps/metgram/metgram-script.in
+@@ -1,4 +1,4 @@
+-#!/bin/ksh
++#!/bin/sh
+ #set -x
+ 
+ # Platform dependent variables
