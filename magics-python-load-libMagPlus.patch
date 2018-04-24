@@ -19,7 +19,7 @@ diff -up python/Magics.py.in.orig python/Magics.py.in
 +for d in os.environ.get("LD_LIBRARY_PATH", "").split(":"):
 +    p = os.path.join(d, "libMagPlus.so")
 +    if os.path.exists(p):
-+        lib = path
++        lib = p
 +
 +# Then, search in system directory
 +if lib is None:
