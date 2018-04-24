@@ -83,7 +83,7 @@ Requires:       numpy
 Python modules for Magics - The library and tools to visualize meteorological data and statistics
 
 # travis CI doesn't really like long logs
-%undefine verbose
+%define verbose 0
 
 %prep
 %setup -q -n %{name}-%{version}-Source
@@ -96,7 +96,7 @@ pushd build
 %cmake .. \
     -DCMAKE_PREFIX_PATH=%{_prefix} \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
-    -DCMAKE_VERBOSE_MAKEFILE=OFF \
+    -DCMAKE_VERBOSE_MAKEFILE:BOOL=OFF \
     -DINSTALL_LIB_DIR=%{_lib} \
     -DBUILD_SHARED_LIBS=ON \
     -DENABLE_CAIRO=ON \
