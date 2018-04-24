@@ -1,7 +1,7 @@
-Index: magics++-3.0.0/src/magics_config.h.in
+Index: src/magics_config.h.in
 ===================================================================
---- magics++-3.0.0.orig/src/magics_config.h.in
-+++ magics++-3.0.0/src/magics_config.h.in
+--- src/magics_config.h.in
++++ src/magics_config.h.in
 @@ -80,7 +80,9 @@
  #cmakedefine MAGICS_COPYRIGHT_PERIOD
  
