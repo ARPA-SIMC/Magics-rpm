@@ -4,7 +4,7 @@
 %define python3_vers python3
 %endif
 
-%global releaseno 1
+%global releaseno 2
 
 Name:           Magics
 Version:        3.0.3
@@ -161,6 +161,9 @@ popd
 %{python3_sitearch}/*
 
 %changelog
+* Thu Apr 26 2018 Daniele Branchini <dbranchini@arpae.it> - 3.0.3-2
+- fixed python tests
+
 * Tue Apr 24 2018 Daniele Branchini <dbranchini@arpae.it> - 3.0.3-1
 - Version 3.0.3
 
