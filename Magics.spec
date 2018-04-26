@@ -14,6 +14,7 @@ URL:            http://www.ecmwf.int/products/data/software/magics++.html
 Source0:        https://software.ecmwf.int/wiki/download/attachments/3473464/%{name}-%{version}-Source.tar.gz
 Patch0:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-fix-warnings.patch
 Patch1:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-rm-ksh.patch
+Patch2:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-python-load-libMagPlus.patch
 License:        Apache License, Version 2.0
 
 BuildRequires:  gcc-c++
@@ -90,6 +91,7 @@ Python modules for Magics - The library and tools to visualize meteorological da
 %setup -q -n %{name}-%{version}-Source
 %patch0
 %patch1
+%patch2
 
 %build
 
@@ -116,14 +118,12 @@ pushd build
 %{make_build}
 popd
 
-#check
-# temporarily disabled:
-# see https://github.com/ARPA-SIMC/Magics-rpm/issues/1
-#pushd build
-## MAGPLUS_HOME is needed for the tests to work, see:
-## https://software.ecmwf.int/wiki/display/MAGP/Installation+Guide
-#MAGPLUS_HOME=%{buildroot} CTEST_OUTPUT_ON_FAILURE=1 ctest
-#popd
+%check
+pushd build
+# MAGPLUS_HOME is needed for the tests to work, see:
+# https://software.ecmwf.int/wiki/display/MAGP/Installation+Guide
+MAGPLUS_HOME=%{buildroot} CTEST_OUTPUT_ON_FAILURE=1 LD_LIBRARY_PATH=%{buildroot}%{_libdir} ctest
+popd
 
 %install
 rm -rf $RPM_BUILD_ROOT
