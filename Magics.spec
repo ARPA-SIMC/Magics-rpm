@@ -101,6 +101,7 @@ pushd build
 %cmake .. \
     -DCMAKE_PREFIX_PATH=%{_prefix} \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
+    -DCMAKE_INSTALL_MESSAGE=NEVER \
     -DINSTALL_LIB_DIR=%{_lib} \
     -DBUILD_SHARED_LIBS=ON \
     -DENABLE_CAIRO=ON \
