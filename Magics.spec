@@ -99,7 +99,7 @@ mkdir build
 pushd build
 
 %cmake .. \
-    -DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-deprecated-declarations -Wno-deprecated-declarations" \
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-deprecated-declarations -Wno-unused-local-typedefs" \
     -DCMAKE_PREFIX_PATH=%{_prefix} \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
     -DINSTALL_LIB_DIR=%{_lib} \
