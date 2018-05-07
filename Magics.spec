@@ -98,6 +98,12 @@ Python modules for Magics - The library and tools to visualize meteorological da
 mkdir build
 pushd build
 
+# the following options are basically to work around travis 4Mb log limit
+# and can be safely removed
+# (see https://github.com/travis-ci/travis-ci/issues/3865 )
+#    -DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-deprecated-declarations -Wno-unused-local-typedefs"
+#    -DCMAKE_INSTALL_MESSAGE=NEVER
+
 %cmake .. \
     -DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-deprecated-declarations -Wno-unused-local-typedefs" \
     -DCMAKE_PREFIX_PATH=%{_prefix} \
