@@ -1,7 +1,9 @@
 %if 0%{?rhel} == 7
 %define python3_vers python34
+%define cmake_vers cmake3
 %else
 %define python3_vers python3
+%define cmake_vers cmake
 %endif
 
 %global releaseno 1
@@ -18,7 +20,7 @@ License:        Apache License, Version 2.0
 
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-gfortran
-BuildRequires:  cmake
+BuildRequires:  %{cmake_vers}
 BuildRequires:  qt5-qtbase-devel
 BuildRequires:  proj-devel
 BuildRequires:  libgeotiff-devel
@@ -102,7 +104,7 @@ pushd build
 #    -DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-deprecated-declarations -Wno-unused-local-typedefs"
 #    -DCMAKE_INSTALL_MESSAGE=NEVER
 
-%cmake .. \
+%{cmake_vers} .. \
     -DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-deprecated-declarations -Wno-unused-local-typedefs" \
     -DCMAKE_PREFIX_PATH=%{_prefix} \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
