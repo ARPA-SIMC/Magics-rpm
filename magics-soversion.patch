@@ -1,0 +1,25 @@
+--- Magics-3.1.0-Source.orig/src/CMakeLists.txt	2018-06-19 14:57:00.000000000 +0200
++++ Magics-3.1.0-Source/src/CMakeLists.txt	2018-09-12 13:13:22.766925396 +0200
+@@ -128,16 +128,22 @@
+                         ${MAGICS_EXTRA_DEFINITIONS} MAGICS_EXCEPTION=on
+                      LIBS
+                         ${MAGICS_EXTRA_LIBRARIES}
++                     SOVERSION
++                        %{MAGICS_SOVERSION}
+                      TYPE SHARED )
+ 
+ ecbuild_add_library( TARGET      MagPlusSingle
+                      SOURCES     MagicsSingle.cc
+                      LIBS        MagPlus
++                     SOVERSION
++                        %{MAGICS_SOVERSION}
+                      TYPE        SHARED )
+ 
+ ecbuild_add_library( TARGET      MagPlusDouble
+                      SOURCES     MagicsDouble.cc
+                      LIBS        MagPlus
++                     SOVERSION
++                        %{MAGICS_SOVERSION}
+                      TYPE        SHARED )
+ 
+ if ( BUILD_SHARED_LIBS STREQUAL "BOTH" )
