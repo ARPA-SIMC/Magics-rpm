@@ -172,7 +172,7 @@ popd
 * Wed Nov 28 2018 Daniele Branchini <dbranchini@arpae.it> - 3.2.2-1
 - Version 3.2.2, removed perl dependencies (according to ecmwf changelog)
 
-* Thu Oct 16 2018 Daniele Branchini <dbranchini@arpae.it> - 3.2.0-1
+* Tue Oct 16 2018 Daniele Branchini <dbranchini@arpae.it> - 3.2.0-1
 - Version 3.2.0
 
 * Fri Jul 20 2018 Emanuele Di Giacomo <edigiacomo@arpae.it> - 3.1.0-1
