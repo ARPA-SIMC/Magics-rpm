@@ -11,7 +11,7 @@
 %global releaseno 1
 
 Name:           Magics
-Version:        3.3.1
+Version:        4.0.2
 Release:        %{releaseno}%{dist}
 Summary:        Library and tools to visualize meteorological data and statistics
 URL:            http://www.ecmwf.int/products/data/software/magics++.html
@@ -114,7 +114,6 @@ pushd build
     -DENABLE_CAIRO=ON \
     -DENABLE_GEOTIFF=ON \
     -DENABLE_NETCDF=ON \
-    -DENABLE_BUFR=ON \
     -DENABLE_PYTHON=ON \
     -DENABLE_FORTRAN=ON \
     -DENABLE_METVIEW=ON \
