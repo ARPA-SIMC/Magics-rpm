@@ -1,5 +1,5 @@
 %if 0%{?rhel} == 7
-%define python3_vers python34
+%define python3_vers python36
 %define cmake_vers cmake3
 %define ctest_vers ctest3
 %else
@@ -165,9 +165,12 @@ popd
 %files -n python3-%{name}
 
 %defattr(-,root,root)
-%{python3_sitearch}/*
+#{python3_sitearch}/*
 
 %changelog
+* Wed Apr 10 2019 Daniele Branchini <dbranchini@arpae.it> - 4.2.0-1
+- Version 4.2.0
+
 * Wed Jan 23 2019 Daniele Branchini <dbranchini@arpae.it> - 3.3.1-1
 - Version 3.3.1
 
