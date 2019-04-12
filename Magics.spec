@@ -1,9 +1,11 @@
 %global releaseno 2
 
 %if 0%{?rhel} == 7
+%define python3_vers python36
 %define cmake_vers cmake3
 %define ctest_vers ctest3
 %else
+%define python3_vers python3
 %define cmake_vers cmake
 %define ctest_vers ctest
 %endif
@@ -39,6 +41,9 @@ BuildRequires:  gd-devel
 BuildRequires:  fftw-devel
 BuildRequires:  boost-devel
 BuildRequires:  git
+BuildRequires:  %{python3_vers}-devel
+BuildRequires:  %{python3_vers}-numpy
+BuildRequires:  %{python3_vers}-jinja2
 # Apparently only required for CentOs
 BuildRequires:  openjpeg2-devel
 
@@ -101,9 +106,11 @@ pushd build
     -DENABLE_CAIRO=ON \
     -DENABLE_GEOTIFF=ON \
     -DENABLE_NETCDF=ON \
+    -DENABLE_PYTHON=ON \
     -DENABLE_FORTRAN=ON \
     -DENABLE_METVIEW=ON \
     -DGEOTIFF_INCLUDE_DIR=/usr/include/libgeotiff \
+    -DPYTHON_EXECUTABLE=%{__python3}
     -DENABLE_ODB=OFF
 
 %{make_build}
@@ -148,7 +155,7 @@ popd
 
 %changelog
 * Fri Apr 12 2019 Daniele Branchini <dbranchini@arpae.it> - 4.2.0-2
-- Removed python references since the interface has been separated
+- Removed python package since the interface has been separated
 
 * Wed Apr 10 2019 Daniele Branchini <dbranchini@arpae.it> - 4.2.0-1
 - Version 4.2.0
