@@ -1,5 +1,13 @@
 %global releaseno 2
 
+%if 0%{?rhel} == 7
+%define cmake_vers cmake3
+%define ctest_vers ctest3
+%else
+%define cmake_vers cmake
+%define ctest_vers ctest
+%endif
+
 Name:           Magics
 Version:        4.0.2
 Release:        %{releaseno}%{dist}
