@@ -110,7 +110,7 @@ pushd build
     -DENABLE_FORTRAN=ON \
     -DENABLE_METVIEW=ON \
     -DGEOTIFF_INCLUDE_DIR=/usr/include/libgeotiff \
-    -DPYTHON_EXECUTABLE=%{__python3}
+    -DPYTHON_EXECUTABLE=%{__python3} \
     -DENABLE_ODB=OFF
 
 %{make_build}
