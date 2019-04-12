@@ -1,14 +1,4 @@
-%if 0%{?rhel} == 7
-%define python3_vers python36
-%define cmake_vers cmake3
-%define ctest_vers ctest3
-%else
-%define python3_vers python3
-%define cmake_vers cmake
-%define ctest_vers ctest
-%endif
-
-%global releaseno 1
+%global releaseno 2
 
 Name:           Magics
 Version:        4.0.2
@@ -41,9 +31,6 @@ BuildRequires:  gd-devel
 BuildRequires:  fftw-devel
 BuildRequires:  boost-devel
 BuildRequires:  git
-BuildRequires:  %{python3_vers}-devel
-BuildRequires:  %{python3_vers}-numpy
-BuildRequires:  %{python3_vers}-jinja2
 # Apparently only required for CentOs
 BuildRequires:  openjpeg2-devel
 
@@ -80,14 +67,6 @@ Summary:        Developing package for Magics
 %description devel
 Header and library files for Magics - The library and tools to visualize meteorological data and statistics
 
-%package -n python3-%{name}
-Summary:        Magics Python library
-Requires:       %{name} = %{?epoch:%epoch:}%{version}-%{release}
-Requires:       numpy
-
-%description -n python3-%{name}
-Python modules for Magics - The library and tools to visualize meteorological data and statistics
-
 %prep
 %setup -q -n %{name}-%{version}-Source
 %patch0
@@ -114,13 +93,10 @@ pushd build
     -DENABLE_CAIRO=ON \
     -DENABLE_GEOTIFF=ON \
     -DENABLE_NETCDF=ON \
-    -DENABLE_PYTHON=ON \
     -DENABLE_FORTRAN=ON \
     -DENABLE_METVIEW=ON \
     -DGEOTIFF_INCLUDE_DIR=/usr/include/libgeotiff \
-    -DENABLE_ODB=OFF \
-    -DENABLE_PYTHON=ON \
-    -DPYTHON_EXECUTABLE=%{__python3}
+    -DENABLE_ODB=OFF
 
 %{make_build}
 popd
@@ -162,12 +138,10 @@ popd
 %{_libdir}/*.a
 
 
-%files -n python3-%{name}
-
-%defattr(-,root,root)
-#{python3_sitearch}/*
-
 %changelog
+* Fri Apr 12 2019 Daniele Branchini <dbranchini@arpae.it> - 4.2.0-2
+- Removed python references since the interface has been separated
+
 * Wed Apr 10 2019 Daniele Branchini <dbranchini@arpae.it> - 4.2.0-1
 - Version 4.2.0
 
