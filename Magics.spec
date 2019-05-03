@@ -1,15 +1,5 @@
 %global releaseno 2
 
-%if 0%{?rhel} == 7
-%define python3_vers python36
-%define cmake_vers cmake3
-%define ctest_vers ctest3
-%else
-%define python3_vers python3
-%define cmake_vers cmake
-%define ctest_vers ctest
-%endif
-
 Name:           Magics
 Version:        4.0.2
 Release:        %{releaseno}%{dist}
@@ -19,6 +9,18 @@ Source0:        https://software.ecmwf.int/wiki/download/attachments/3473464/%{n
 Patch0:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-fix-warnings.patch
 Patch1:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-rm-ksh.patch
 License:        Apache License, Version 2.0
+
+%if 0%{?rhel} == 7
+%define python3_vers python36
+%define cmake_vers cmake3
+%define ctest_vers ctest3
+# we want python 3.6 interpreter 
+BuildRequires: python3-rpm-macros >= 3-23
+%else
+%define python3_vers python3
+%define cmake_vers cmake
+%define ctest_vers ctest
+%endif
 
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-gfortran
@@ -46,7 +48,11 @@ BuildRequires:  %{python3_vers}-numpy
 BuildRequires:  %{python3_vers}-jinja2
 # Apparently only required for CentOs
 BuildRequires:  openjpeg2-devel
-
+%if 0%{?rhel} == 7
+# newer gcc needed
+# see https://jira.ecmwf.int/browse/SUP-2823
+BuildRequires: devtoolset-7
+%endif
 
 %description
 Runtime files for Magics - 
@@ -110,8 +116,13 @@ pushd build
     -DENABLE_FORTRAN=ON \
     -DENABLE_METVIEW=ON \
     -DGEOTIFF_INCLUDE_DIR=/usr/include/libgeotiff \
+    -DENABLE_ODB=OFF \
+    -DENABLE_PYTHON=ON \
     -DPYTHON_EXECUTABLE=%{__python3} \
-    -DENABLE_ODB=OFF
+    -DCMAKE_BUILD_TYPE=Release
+
+
+#    -DCMAKE_CXX_FLAGS_PRODUCTION:STRING=-O2
 
 %{make_build}
 popd
@@ -154,8 +165,9 @@ popd
 
 
 %changelog
-* Fri Apr 12 2019 Daniele Branchini <dbranchini@arpae.it> - 4.2.0-2
+* Fri May  3 2019 Daniele Branchini <dbranchini@arpae.it> - 4.2.0-2
 - Removed python package since the interface has been separated
+- Added CentOs7 dependency for newer gcc
 
 * Wed Apr 10 2019 Daniele Branchini <dbranchini@arpae.it> - 4.2.0-1
 - Version 4.2.0
