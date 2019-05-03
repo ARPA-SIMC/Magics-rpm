@@ -103,11 +103,12 @@ pushd build
 #    -DCMAKE_INSTALL_MESSAGE=NEVER
 
 %{cmake_vers} .. \
-     -DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-deprecated-declarations -Wno-unused-local-typedefs" \
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-deprecated-declarations -Wno-unused-local-typedefs" \
 %if 0%{?rhel} == 7
-     -DCMAKE_C_COMPILER=/opt/rh/devtoolset-7/root/usr/bin/gcc \
-     -DCMAKE_CXX_COMPILER=/opt/rh/devtoolset-7/root/usr/bin/g++ \
-     -DCMAKE_Fortran_COMPILER=/opt/rh/devtoolset-7/root/usr/bin/gfortran \
+    -DCMAKE_C_COMPILER=/opt/rh/devtoolset-7/root/usr/bin/gcc \
+    -DCMAKE_CXX_COMPILER=/opt/rh/devtoolset-7/root/usr/bin/g++ \
+    -DCMAKE_Fortran_COMPILER=/opt/rh/devtoolset-7/root/usr/bin/gfortran \
+    -DCMAKE_BUILD_TYPE=Release \
 %endif 
     -DCMAKE_PREFIX_PATH=%{_prefix} \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
@@ -123,8 +124,7 @@ pushd build
     -DGEOTIFF_INCLUDE_DIR=/usr/include/libgeotiff \
     -DENABLE_ODB=OFF \
     -DENABLE_PYTHON=ON \
-    -DPYTHON_EXECUTABLE=%{__python3} \
-    -DCMAKE_BUILD_TYPE=Release
+    -DPYTHON_EXECUTABLE=%{__python3}
 
 #    -DCMAKE_CXX_FLAGS_PRODUCTION:STRING=-O2
 
