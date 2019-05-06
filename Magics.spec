@@ -113,7 +113,6 @@ pushd build
     -DCMAKE_PREFIX_PATH=%{_prefix} \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
     -DCMAKE_INSTALL_MESSAGE=NEVER \
-    -DINSTALL_LIB_DIR=%{_lib} \
     -DBUILD_SHARED_LIBS=ON \
     -DENABLE_CAIRO=ON \
     -DENABLE_GEOTIFF=ON \
@@ -128,6 +127,9 @@ pushd build
 
 #    -DCMAKE_CXX_FLAGS_PRODUCTION:STRING=-O2
 
+# This seems to break inline compilation in ctest   
+#    -DINSTALL_LIB_DIR=%{_lib} \
+    
 %{make_build}
 popd
 

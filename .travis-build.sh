@@ -15,9 +15,9 @@ then
     yum install -q -y rpmdevtools
     yum install -q -y yum-plugin-copr
     yum install -q -y pv
-    yum install -y centos-release-scl-rh
+    yum install -q -y centos-release-scl-rh
     yum-config-manager --enable rhel-server-rhscl-7-rpms
-    yum install -y devtoolset-7
+    yum install -q -y devtoolset-7
     yum copr enable -q -y simc/stable
 elif [[ $image =~ ^fedora: ]]
 then
