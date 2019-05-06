@@ -107,13 +107,13 @@ pushd build
 %if 0%{?rhel} == 7
     -DCMAKE_C_COMPILER=/opt/rh/devtoolset-7/root/usr/bin/gcc \
     -DCMAKE_CXX_COMPILER=/opt/rh/devtoolset-7/root/usr/bin/g++ \
-    -DCMAKE_Fortran_COMPILER=/opt/rh/devtoolset-7/root/usr/bin/gfortran \
     -DCMAKE_BUILD_TYPE=Release \
 %endif 
     -DCMAKE_PREFIX_PATH=%{_prefix} \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
     -DCMAKE_INSTALL_MESSAGE=NEVER \
     -DBUILD_SHARED_LIBS=ON \
+    -DINSTALL_LIB_DIR=%{_lib} \
     -DENABLE_CAIRO=ON \
     -DENABLE_GEOTIFF=ON \
     -DENABLE_NETCDF=ON \
@@ -127,9 +127,8 @@ pushd build
 
 #    -DCMAKE_CXX_FLAGS_PRODUCTION:STRING=-O2
 
-# This seems to break inline compilation in ctest   
-#    -DINSTALL_LIB_DIR=%{_lib} \
-    
+#    -DCMAKE_Fortran_COMPILER=/opt/rh/devtoolset-7/root/usr/bin/gfortran \
+   
 %{make_build}
 popd
 
