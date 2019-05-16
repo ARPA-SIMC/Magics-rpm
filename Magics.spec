@@ -1,7 +1,7 @@
-%global releaseno 2
+%global releaseno 1
 
 Name:           Magics
-Version:        4.0.2
+Version:        4.0.3
 Release:        %{releaseno}%{dist}
 Summary:        Library and tools to visualize meteorological data and statistics
 URL:            http://www.ecmwf.int/products/data/software/magics++.html
@@ -107,6 +107,7 @@ pushd build
 %if 0%{?rhel} == 7
     -DCMAKE_C_COMPILER=/opt/rh/devtoolset-7/root/usr/bin/gcc \
     -DCMAKE_CXX_COMPILER=/opt/rh/devtoolset-7/root/usr/bin/g++ \
+    -DCMAKE_Fortran_COMPILER=/usr/bin/gfortran \
     -DCMAKE_BUILD_TYPE=Release \
 %endif 
     -DCMAKE_PREFIX_PATH=%{_prefix} \
@@ -170,12 +171,16 @@ popd
 
 
 %changelog
-* Fri May  3 2019 Daniele Branchini <dbranchini@arpae.it> - 4.2.0-2
+* Thu May 16 2019 Daniele Branchini <dbranchini@arpae.it> - 4.0.3-1
+- Version 4.0.3
+- Forced old gfortran compiler to match the eccodes package
+
+* Fri May  3 2019 Daniele Branchini <dbranchini@arpae.it> - 4.0.2-2
 - Removed python package since the interface has been separated
 - Added CentOs7 dependency for newer gcc
 
-* Wed Apr 10 2019 Daniele Branchini <dbranchini@arpae.it> - 4.2.0-1
-- Version 4.2.0
+* Wed Apr 10 2019 Daniele Branchini <dbranchini@arpae.it> - 4.0.2-1
+- Version 4.0.3
 
 * Wed Jan 23 2019 Daniele Branchini <dbranchini@arpae.it> - 3.3.1-1
 - Version 3.3.1
