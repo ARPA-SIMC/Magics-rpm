@@ -25,7 +25,7 @@ then
     builddep="dnf builddep"
     sed -i '/^tsflags=/d' /etc/dnf/dnf.conf
     dnf install -q -y @buildsys-build
-    dnf install -q -y 'dnf-command(builddep)'
+    dnf install --allowerasing -q -y @buildsys-build
     dnf install -q -y git
     dnf install -q -y rpmdevtools
     dnf install -q -y pv
