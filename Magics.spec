@@ -1,4 +1,4 @@
-%global releaseno 1
+%global releaseno 2
 
 Name:           Magics
 Version:        4.0.3
@@ -173,6 +173,9 @@ popd
 
 
 %changelog
+* Fri Jun  7 2019 Emanuele Di Giacomo <edigiacomo@arpae.it> - 4.0.3-2
+- Fixed Python shebang of magicsCompatibilityChecker
+
 * Thu May 16 2019 Daniele Branchini <dbranchini@arpae.it> - 4.0.3-1
 - Version 4.0.3
 - Forced old gfortran compiler to match the eccodes package
