@@ -8,6 +8,7 @@ URL:            http://www.ecmwf.int/products/data/software/magics++.html
 Source0:        https://software.ecmwf.int/wiki/download/attachments/3473464/%{name}-%{version}-Source.tar.gz
 Patch0:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-fix-warnings.patch
 Patch1:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-rm-ksh.patch
+Patch2:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-fix-shebangs.patch
 License:        Apache License, Version 2.0
 
 %if 0%{?rhel} == 7
@@ -90,6 +91,7 @@ Header and library files for Magics - The library and tools to visualize meteoro
 %setup -q -n %{name}-%{version}-Source
 %patch0
 %patch1
+%patch2
 
 %build
 
