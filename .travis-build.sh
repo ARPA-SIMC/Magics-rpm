@@ -8,6 +8,7 @@ then
     pkgcmd="yum"
     builddep="yum-builddep"
     sed -i '/^tsflags=/d' /etc/yum.conf
+    yum update -q -y
     yum install -q -y epel-release
     yum install -q -y @buildsys-build
     yum install -q -y yum-utils
@@ -24,6 +25,7 @@ then
     pkgcmd="dnf"
     builddep="dnf builddep"
     sed -i '/^tsflags=/d' /etc/dnf/dnf.conf
+    dnf update -q -y
     dnf install -q -y 'dnf-command(builddep)'
     dnf install --allowerasing -q -y @buildsys-build
     dnf install -q -y git
@@ -36,7 +38,7 @@ fi
 $builddep -q -y Magics.spec
 
 # Workaround for https://github.com/ARPA-SIMC/Magics-rpm/issues/11
-if [[ $image =~ ^fedora:(29|30|rawhide)$ ]]
+if [[ $image = "fedora:29" ]]
 then
     if [ -x /usr/lib64/libQt5Core.so.5 ]; then
         (set -x; strip --remove-section=.note.ABI-tag /usr/lib64/libQt5Core.so.5)
