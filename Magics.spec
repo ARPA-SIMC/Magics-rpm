@@ -167,7 +167,7 @@ popd
 %files devel
 %defattr(-,root,root)
 %{_includedir}/magics/*
-%{_libdir}/pkgconfig/magics.pc
+#{_libdir}/pkgconfig/magics.pc
 %{_libdir}/*.so
 %{_libdir}/*.a
 
