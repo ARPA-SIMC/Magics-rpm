@@ -7,7 +7,7 @@ if [[ $image =~ ^centos: ]]
 then
     pkgcmd="yum"
     builddep="yum-builddep"
-    builddepopt="--disablerepo=centos-sclo-rh-source"
+    builddepopt="--disablerepo=centos-sclo-rh"
     sed -i '/^tsflags=/d' /etc/yum.conf
     yum update -q -y
     yum install -q -y epel-release
