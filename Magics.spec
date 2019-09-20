@@ -147,8 +147,12 @@ rm -rf $RPM_BUILD_ROOT
 pushd build
 %make_install
 
-#fixing bug in 4.1.3
-mv %{buildroot}/usr/lib/pkgconfig/magics.pc %{buildroot}%{_libdir}/pkgconfig/magics.pc
+# fixing bug in 4.1.3
+mv %{buildroot}/usr/lib/pkgconfig %{buildroot}%{_libdir}/
+# remove rpath
+sed -i 's|^libs=.*$|libs=-L${libdir} -lMagPlus|g' %{buildroot}/%{_libdir}/pkgconfig/magics.pc
+sed -i 's|-Wl,-rpath,${libdir}64 ${libdir}64/lib|-l|g' %{buildroot}/%{_libdir}/pkgconfig/magics.pc
+sed -i 's|\.so[0-9\.]*||g' %{buildroot}/%{_libdir}/pkgconfig/magics.pc
 
 pushd %{buildroot}%{_libdir}
 for l in *.so
