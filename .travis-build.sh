@@ -7,6 +7,7 @@ if [[ $image =~ ^centos: ]]
 then
     pkgcmd="yum"
     builddep="yum-builddep"
+    builddepopt="--disablerepo=centos-sclo-rh-source"
     sed -i '/^tsflags=/d' /etc/yum.conf
     yum update -q -y
     yum install -q -y epel-release
@@ -16,13 +17,14 @@ then
     yum install -q -y rpmdevtools
     yum install -q -y yum-plugin-copr
     yum install -q -y pv
-    yum install -q -y centos-release-scl
+    yum install -q -y centos-release-scl-rh
     yum install -q -y devtoolset-7
     yum copr enable -q -y simc/stable
 elif [[ $image =~ ^fedora: ]]
 then
     pkgcmd="dnf"
     builddep="dnf builddep"
+    builddepopt="--disablerepo=centos-sclo-rh-source"
     sed -i '/^tsflags=/d' /etc/dnf/dnf.conf
     dnf update -q -y
     dnf install -q -y 'dnf-command(builddep)'
@@ -34,7 +36,7 @@ then
     dnf copr enable -q -y simc/stable
 fi
 
-$builddep -q -y Magics.spec
+$builddep -q -y $builddepopt Magics.spec
 
 # Workaround for https://github.com/ARPA-SIMC/Magics-rpm/issues/11
 if [[ $image = "fedora:29" ]]
