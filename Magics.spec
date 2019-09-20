@@ -147,6 +147,9 @@ rm -rf $RPM_BUILD_ROOT
 pushd build
 %make_install
 
+#fixing bug in 4.1.3
+mv %{buildroot}/usr/lib/pkgconfig/magics.pc %{buildroot}%{_libdir}/pkgconfig/magics.pc
+
 pushd %{buildroot}%{_libdir}
 for l in *.so
 do
@@ -166,11 +169,11 @@ popd
 
 %files devel
 %defattr(-,root,root)
-%{_includedir}/magics/*
-#{_libdir}/pkgconfig/magics.pc
+%{_includedir}/magics
+%{_libdir}/pkgconfig/magics.pc
 %{_libdir}/*.so
 %{_libdir}/*.a
-
+%{_libdir}/cmake/magics
 
 %changelog
 * Thu Sep 19 2019 Daniele Branchini <dbranchini@arpae.it> - 4.1.3-1
