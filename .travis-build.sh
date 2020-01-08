@@ -26,6 +26,7 @@ then
     builddep="dnf builddep"
     builddepopt=""
     sed -i '/^tsflags=/d' /etc/dnf/dnf.conf
+    dnf update -q -y
     dnf install -q -y epel-release
     dnf install -q -y 'dnf-command(config-manager)'
     dnf config-manager --set-enabled PowerTools

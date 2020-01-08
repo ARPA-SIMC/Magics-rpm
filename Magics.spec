@@ -1,7 +1,7 @@
 %global releaseno 1
 
 Name:           Magics
-Version:        4.2.0
+Version:        4.2.3
 Release:        %{releaseno}%{dist}
 Summary:        Library and tools to visualize meteorological data and statistics
 URL:            http://www.ecmwf.int/products/data/software/magics++.html
@@ -127,10 +127,6 @@ pushd build
     -DENABLE_ODB=OFF \
     -DENABLE_PYTHON=ON \
     -DPYTHON_EXECUTABLE=%{__python3}
-
-#    -DCMAKE_CXX_FLAGS_PRODUCTION:STRING=-O2
-
-#    -DCMAKE_Fortran_COMPILER=/opt/rh/devtoolset-7/root/usr/bin/gfortran \
    
 %{make_build}
 popd
@@ -147,8 +143,6 @@ rm -rf $RPM_BUILD_ROOT
 pushd build
 %make_install
 
-# fixing bug in 4.1.3
-mv %{buildroot}/usr/lib/pkgconfig %{buildroot}%{_libdir}/
 # remove rpath
 sed -i 's|^libs=.*$|libs=-L${libdir} -lMagPlus|g' %{buildroot}/%{_libdir}/pkgconfig/magics.pc
 sed -i 's|-Wl,-rpath,${libdir}64 ${libdir}64/lib|-l|g' %{buildroot}/%{_libdir}/pkgconfig/magics.pc
@@ -180,6 +174,9 @@ popd
 %{_libdir}/cmake/magics
 
 %changelog
+* Wed Jan  8 2020 Daniele Branchini <dbranchini@arpae.it> - 4.2.3-1
+- Version 4.2.3
+
 * Thu Nov  7 2019 Daniele Branchini <dbranchini@arpae.it> - 4.2.0-1
 - Version 4.2.0
 
