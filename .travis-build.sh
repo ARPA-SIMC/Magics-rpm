@@ -54,14 +54,6 @@ fi
 
 $builddep -q -y $builddepopt Magics.spec
 
-# Workaround for https://github.com/ARPA-SIMC/Magics-rpm/issues/11
-if [[ $image = "fedora:29" ]]
-then
-    if [ -x /usr/lib64/libQt5Core.so.5 ]; then
-        (set -x; strip --remove-section=.note.ABI-tag /usr/lib64/libQt5Core.so.5)
-    fi
-fi
-
 if [[ $image =~ ^fedora: || $image =~ ^centos: ]]
 then
     pkgname="$(rpmspec -q --qf="Magics-%{version}-%{release}\n" Magics.spec | head -n1)"
