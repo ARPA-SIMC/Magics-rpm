@@ -1,7 +1,7 @@
 %global releaseno 1
 
 Name:           Magics
-Version:        4.2.3
+Version:        4.2.6
 Release:        %{releaseno}%{dist}
 Summary:        Library and tools to visualize meteorological data and statistics
 URL:            http://www.ecmwf.int/products/data/software/magics++.html
@@ -174,6 +174,9 @@ popd
 %{_libdir}/cmake/magics
 
 %changelog
+* Wed Feb 26 2020 Daniele Branchini <dbranchini@arpae.it> - 4.2.6-1
+- Version 4.2.6
+
 * Wed Jan  8 2020 Daniele Branchini <dbranchini@arpae.it> - 4.2.3-1
 - Version 4.2.3
 
