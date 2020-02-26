@@ -117,6 +117,7 @@ pushd build
     -DCMAKE_INSTALL_MESSAGE=NEVER \
     -DBUILD_SHARED_LIBS=ON \
     -DINSTALL_LIB_DIR=%{_lib} \
+    -DPKGCONFIG_DIR=%{_libdir}/pkgconfig \
     -DENABLE_CAIRO=ON \
     -DENABLE_GEOTIFF=ON \
     -DENABLE_NETCDF=ON \
