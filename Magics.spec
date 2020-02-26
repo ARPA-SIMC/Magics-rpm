@@ -117,7 +117,6 @@ pushd build
     -DCMAKE_INSTALL_MESSAGE=NEVER \
     -DBUILD_SHARED_LIBS=ON \
     -DINSTALL_LIB_DIR=%{_lib} \
-    -DPKGCONFIG_DIR=%{_libdir}/pkgconfig \
     -DENABLE_CAIRO=ON \
     -DENABLE_GEOTIFF=ON \
     -DENABLE_NETCDF=ON \
@@ -144,6 +143,9 @@ rm -rf $RPM_BUILD_ROOT
 pushd build
 %make_install
 
+# move pkgconfig file
+mv %{buildroot}/%{_prefix}/lib/pkgconfig %{buildroot}/%{_libdir}
+rmdir %{buildroot}/%{_prefix}/lib
 # remove rpath
 sed -i 's|^libs=.*$|libs=-L${libdir} -lMagPlus|g' %{buildroot}/%{_libdir}/pkgconfig/magics.pc
 sed -i 's|-Wl,-rpath,${libdir}64 ${libdir}64/lib|-l|g' %{buildroot}/%{_libdir}/pkgconfig/magics.pc
