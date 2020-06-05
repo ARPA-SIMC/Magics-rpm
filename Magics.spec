@@ -85,7 +85,7 @@ pushd build
 #    -DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-deprecated-declarations -Wno-unused-local-typedefs"
 #    -DCMAKE_INSTALL_MESSAGE=NEVER
 
-%cmake .. \
+cmake .. \
     -DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-deprecated-declarations -Wno-unused-local-typedefs" \
     -DCMAKE_PREFIX_PATH=%{_prefix} \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
@@ -118,9 +118,6 @@ rm -rf $RPM_BUILD_ROOT
 pushd build
 %make_install
 
-# move pkgconfig file
-mv %{buildroot}/%{_prefix}/lib/pkgconfig %{buildroot}/%{_libdir}
-rmdir %{buildroot}/%{_prefix}/lib
 # remove rpath
 sed -i 's|^libs=.*$|libs=-L${libdir} -lMagPlus|g' %{buildroot}/%{_libdir}/pkgconfig/magics.pc
 sed -i 's|-Wl,-rpath,${libdir}64 ${libdir}64/lib|-l|g' %{buildroot}/%{_libdir}/pkgconfig/magics.pc
