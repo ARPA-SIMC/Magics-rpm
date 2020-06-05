@@ -35,6 +35,7 @@ BuildRequires:  git
 BuildRequires:  python3-devel
 BuildRequires:  python3-numpy
 BuildRequires:  python3-jinja2
+BuildRequires:  openjpeg2-devel
 
 %description
 Runtime files for Magics - 
