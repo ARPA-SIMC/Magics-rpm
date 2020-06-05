@@ -1,7 +1,7 @@
 %global releaseno 1
 
 Name:           Magics
-Version:        4.3.0
+Version:        4.3.3
 Release:        %{releaseno}%{dist}
 Summary:        Library and tools to visualize meteorological data and statistics
 URL:            http://www.ecmwf.int/products/data/software/magics++.html
@@ -11,23 +11,11 @@ Patch1:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{versio
 Patch2:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-fix-shebangs.patch
 License:        Apache License, Version 2.0
 
-%if 0%{?rhel} == 7
-%define python3_vers python36
-%define cmake_vers cmake3
-%define ctest_vers ctest3
-# we want python 3.6 interpreter 
-BuildRequires: python3-rpm-macros >= 3-23
-%else
-%define python3_vers python3
-%define cmake_vers cmake
-%define ctest_vers ctest
-%endif
-
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-gfortran
-BuildRequires:  %{cmake_vers}
+BuildRequires:  cmake
 BuildRequires:  qt5-qtbase-devel
-BuildRequires:  proj-devel
+BuildRequires:  proj-devel >= 6
 BuildRequires:  libgeotiff-devel
 BuildRequires:  swig
 BuildRequires:  eccodes-devel
@@ -44,16 +32,9 @@ BuildRequires:  gd-devel
 BuildRequires:  fftw-devel
 BuildRequires:  boost-devel
 BuildRequires:  git
-BuildRequires:  %{python3_vers}-devel
-BuildRequires:  %{python3_vers}-numpy
-BuildRequires:  %{python3_vers}-jinja2
-# Apparently only required for CentOs
-BuildRequires:  openjpeg2-devel
-%if 0%{?rhel} == 7
-# newer gcc needed
-# see https://jira.ecmwf.int/browse/SUP-2823
-BuildRequires: devtoolset-7
-%endif
+BuildRequires:  python3-devel
+BuildRequires:  python3-numpy
+BuildRequires:  python3-jinja2
 
 %description
 Runtime files for Magics - 
@@ -104,14 +85,8 @@ pushd build
 #    -DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-deprecated-declarations -Wno-unused-local-typedefs"
 #    -DCMAKE_INSTALL_MESSAGE=NEVER
 
-%{cmake_vers} .. \
+%cmake .. \
     -DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-deprecated-declarations -Wno-unused-local-typedefs" \
-%if 0%{?rhel} == 7
-    -DCMAKE_C_COMPILER=/opt/rh/devtoolset-7/root/usr/bin/gcc \
-    -DCMAKE_CXX_COMPILER=/opt/rh/devtoolset-7/root/usr/bin/g++ \
-    -DCMAKE_Fortran_COMPILER=/usr/bin/gfortran \
-    -DCMAKE_BUILD_TYPE=Release \
-%endif 
     -DCMAKE_PREFIX_PATH=%{_prefix} \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
     -DCMAKE_INSTALL_MESSAGE=NEVER \
@@ -135,7 +110,7 @@ popd
 pushd build
 # MAGPLUS_HOME is needed for the tests to work, see:
 # https://software.ecmwf.int/wiki/display/MAGP/Installation+Guide
-MAGPLUS_HOME=%{buildroot} CTEST_OUTPUT_ON_FAILURE=1 LD_LIBRARY_PATH=%{buildroot}%{_libdir} %{ctest_vers}
+MAGPLUS_HOME=%{buildroot} CTEST_OUTPUT_ON_FAILURE=1 LD_LIBRARY_PATH=%{buildroot}%{_libdir} ctest
 popd
 
 %install
@@ -177,8 +152,8 @@ popd
 %{_libdir}/cmake/magics
 
 %changelog
-* Wed Mar 18 2020 Daniele Branchini <dbranchini@arpae.it> - 4.3.0-1
-- Version 4.3.0
+* Fri Jun  5 2020 Daniele Branchini <dbranchini@arpae.it> - 4.3.3-1
+- Version 4.3.3, dropping centos 7 support and proj < 6 support
 
 * Wed Feb 26 2020 Daniele Branchini <dbranchini@arpae.it> - 4.2.6-1
 - Version 4.2.6
