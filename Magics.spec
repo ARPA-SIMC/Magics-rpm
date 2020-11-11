@@ -1,7 +1,7 @@
 %global releaseno 1
 
 Name:           Magics
-Version:        4.4.0
+Version:        4.5.1
 Release:        %{releaseno}%{dist}
 Summary:        Library and tools to visualize meteorological data and statistics
 URL:            http://www.ecmwf.int/products/data/software/magics++.html
@@ -150,6 +150,9 @@ popd
 %{_libdir}/cmake/magics
 
 %changelog
+* Wed Nov 11 2020 Daniele Branchini <dbranchini@arpae.it> - 4.5.1-1
+- Version 4.5.1
+
 * Mon Jul 13 2020 Emanuele Di Giacomo <edigiacomo@arpae.it> - 4.4.0-1
 - Use new feature of eccodes to display data coded  in various projections
 - Improvement in the position of the title for the vertical axis
