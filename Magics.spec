@@ -24,7 +24,7 @@ BuildRequires:  pango-devel
 BuildRequires:  eccodes-data
 BuildRequires:  libemos
 BuildRequires:  pkgconfig
-BuildRequires:  expat
+BuildRequires:  expat-devel
 BuildRequires:  netcdf-devel
 BuildRequires:  netcdf-cxx-devel
 BuildRequires:  jasper-devel
