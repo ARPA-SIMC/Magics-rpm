@@ -36,8 +36,8 @@ then
     dnf install -q -y rpmdevtools
     dnf install -q -y pv
     dnf copr enable -q -y simc/stable
-    # needed for latest Magics versions
-    dnf upgrade -y cmake --disablerepo=\* --enablerepo=appstream --releasever=8-stream --refresh
+    # forcing update of recent cmake, needed for latest Magics versions
+    dnf install -q -y cmake --disablerepo=\* --enablerepo=appstream --releasever=8-stream --refresh
 elif [[ $image =~ ^fedora: ]]
 then
     pkgcmd="dnf"
