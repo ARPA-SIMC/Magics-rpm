@@ -13,7 +13,10 @@ License:        Apache License, Version 2.0
 
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-gfortran
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.12
+# forcing libarchive update in CentOS 8 from simc/stable repo
+# needed for updated cmake
+%{?el8:BuildRequires: libarchive >= 3.3.3}
 BuildRequires:  qt5-qtbase-devel
 BuildRequires:  proj-devel >= 6
 BuildRequires:  libgeotiff-devel
