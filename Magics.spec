@@ -157,7 +157,7 @@ popd
 %{_libdir}/cmake/magics
 
 %changelog
-* Wed Feb  3 2021 Branco <branco@parvenza.metarpa> - 4.5.3-1
+* Wed Feb  3 2021 Daniele Branchini <dbranchini@arpae.it> - 4.5.3-1
 - Version 4.5.3
 
 * Wed Nov 11 2020 Daniele Branchini <dbranchini@arpae.it> - 4.5.1-1
