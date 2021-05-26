@@ -1,13 +1,9 @@
-[![Build Status](https://badges.herokuapp.com/travis/ARPA-SIMC/Magics-rpm?branch=master&env=DOCKER_IMAGE=centos:8&label=centos8)](https://travis-ci.org/ARPA-SIMC/Magics-rpm)
-[![Build Status](https://badges.herokuapp.com/travis/ARPA-SIMC/Magics-rpm?branch=master&env=DOCKER_IMAGE=fedora:32&label=fedora32)](https://travis-ci.org/ARPA-SIMC/Magics-rpm)
-[![Build Status](https://badges.herokuapp.com/travis/ARPA-SIMC/Magics-rpm?branch=master&env=DOCKER_IMAGE=fedora:33&label=fedora33)](https://travis-ci.org/ARPA-SIMC/Magics-rpm)
-[![Build Status](https://badges.herokuapp.com/travis/ARPA-SIMC/Magics-rpm?branch=master&env=DOCKER_IMAGE=fedora:34&label=fedora34)](https://travis-ci.org/ARPA-SIMC/Magics-rpm)
-[![Build Status](https://badges.herokuapp.com/travis/ARPA-SIMC/Magics-rpm?branch=master&env=DOCKER_IMAGE=fedora:rawhide&label=fedorarawhide)](https://travis-ci.org/ARPA-SIMC/Magics-rpm)
+[![Build Status](https://simc.arpae.it/moncic-ci/Magics-rpm/centos8.png)](https://simc.arpae.it/moncic-ci/Magics-rpm/)
+[![Build Status](https://simc.arpae.it/moncic-ci/Magics-rpm/fedora32.png)](https://simc.arpae.it/moncic-ci/Magics-rpm/)
+[![Build Status](https://simc.arpae.it/moncic-ci/Magics-rpm/fedora34.png)](https://simc.arpae.it/moncic-ci/Magics-rpm/)
 [![Build Status](https://copr.fedorainfracloud.org/coprs/simc/stable/package/Magics/status_image/last_build.png)](https://copr.fedorainfracloud.org/coprs/simc/stable/package/Magics/)
 
 # rpm packaging files for Magics
-
-
 
 This github repository neither hosts nor provide Magics sources, it's meant to
 host (unofficial) convenience files for Fedora and CentOs rpm packaging.

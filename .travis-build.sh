@@ -18,6 +18,7 @@ then
     yum install -q -y yum-plugin-copr
     yum install -q -y pv
     yum install -q -y centos-release-scl-rh
+    yum-config-manager --enable rhel-server-rhscl-7-rpms
     yum install -q -y devtoolset-7
     yum copr enable -q -y simc/stable
 elif [[ $image =~ ^centos:8 ]]
