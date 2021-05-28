@@ -1,7 +1,7 @@
 %global releaseno 1
 
 Name:           Magics
-Version:        4.5.3
+Version:        4.8.0
 Release:        %{releaseno}%{dist}
 Summary:        Library and tools to visualize meteorological data and statistics
 URL:            http://www.ecmwf.int/products/data/software/magics++.html
@@ -9,6 +9,7 @@ Source0:        https://software.ecmwf.int/wiki/download/attachments/3473464/%{n
 Patch0:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-fix-warnings.patch
 Patch1:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-rm-ksh.patch
 Patch2:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-fix-shebangs.patch
+Patch3:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-fix-include.patch
 License:        Apache License, Version 2.0
 
 BuildRequires:  gcc-c++
@@ -77,24 +78,19 @@ Header and library files for Magics - The library and tools to visualize meteoro
 %patch0
 %patch1
 %patch2
+%patch3
 
 %build
 
 mkdir build
 pushd build
 
-# the following options are basically to work around travis 4Mb log limit
-# and can be safely removed
-# (see https://github.com/travis-ci/travis-ci/issues/3865 )
-#    -DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-deprecated-declarations -Wno-unused-local-typedefs"
-#    -DCMAKE_INSTALL_MESSAGE=NEVER
-
-# TODO: libgeotiff include in CXX_FLAGS should be removed once the DGEOTIFF_INCLUDE_DIR variable is fixed
+# libgeotiff include in CXX_FLAGS should be removed once the DGEOTIFF_INCLUDE_DIR variable is fixed
 # (see: https://jira.ecmwf.int/browse/SUP-3299)
 
 cmake .. \
-    -DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-deprecated-declarations -Wno-unused-local-typedefs -I/usr/include/libgeotiff" \
     -DCMAKE_PREFIX_PATH=%{_prefix} \
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS -I/usr/include/libgeotiff" \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
     -DCMAKE_INSTALL_MESSAGE=NEVER \
     -DBUILD_SHARED_LIBS=ON \
@@ -102,14 +98,11 @@ cmake .. \
     -DENABLE_CAIRO=ON \
     -DENABLE_GEOTIFF=ON \
     -DENABLE_NETCDF=ON \
-    -DENABLE_PYTHON=ON \
-    -DENABLE_FORTRAN=ON \
     -DENABLE_METVIEW=ON \
     -DGEOTIFF_INCLUDE_DIR=/usr/include/libgeotiff \
-    -DENABLE_ODB=OFF \
-    -DENABLE_PYTHON=ON \
-    -DPYTHON_EXECUTABLE=%{__python3}
-   
+    -DENABLE_ODB=OFF
+
+
 %{make_build}
 popd
 
@@ -157,6 +150,9 @@ popd
 %{_libdir}/cmake/magics
 
 %changelog
+* Fri May 28 2021 Daniele Branchini <dbranchini@arpae.it> - 4.8.0-1
+- Version 4.8.0
+
 * Wed Feb  3 2021 Daniele Branchini <dbranchini@arpae.it> - 4.5.3-1
 - Version 4.5.3
 
