@@ -1,4 +1,4 @@
-%global releaseno 1
+%global releaseno 2
 
 Name:           Magics
 Version:        4.8.0
@@ -153,6 +153,9 @@ popd
 %{_libdir}/cmake/magics
 
 %changelog
+* Tue Jun  8 2021 Daniele Branchini <dbranchini@arpae.it> - 4.8.0-2
+- added dladdr patch (#15)
+
 * Fri May 28 2021 Daniele Branchini <dbranchini@arpae.it> - 4.8.0-1
 - Version 4.8.0
 
