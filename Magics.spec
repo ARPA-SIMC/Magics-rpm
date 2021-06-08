@@ -10,6 +10,8 @@ Patch0:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{versio
 Patch1:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-rm-ksh.patch
 Patch2:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-fix-shebangs.patch
 Patch3:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-fix-include.patch
+# https://github.com/ARPA-SIMC/Magics-rpm/issues/15
+Patch4:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-ignore-dladdr-for-share-folder.patch
 License:        Apache License, Version 2.0
 
 BuildRequires:  gcc-c++
@@ -79,6 +81,7 @@ Header and library files for Magics - The library and tools to visualize meteoro
 %patch1
 %patch2
 %patch3
+%patch4
 
 %build
 
