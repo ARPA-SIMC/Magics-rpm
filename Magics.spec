@@ -1,7 +1,7 @@
-%global releaseno 2
+%global releaseno 1
 
 Name:           Magics
-Version:        4.8.0
+Version:        4.9.1
 Release:        %{releaseno}%{dist}
 Summary:        Library and tools to visualize meteorological data and statistics
 URL:            http://www.ecmwf.int/products/data/software/magics++.html
@@ -9,9 +9,8 @@ Source0:        https://software.ecmwf.int/wiki/download/attachments/3473464/%{n
 Patch0:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-fix-warnings.patch
 Patch1:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-rm-ksh.patch
 Patch2:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-fix-shebangs.patch
-Patch3:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-fix-include.patch
 # https://github.com/ARPA-SIMC/Magics-rpm/issues/15
-Patch4:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-ignore-dladdr-for-share-folder.patch
+Patch3:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-ignore-dladdr-for-share-folder.patch
 License:        Apache License, Version 2.0
 
 BuildRequires:  gcc-c++
@@ -81,7 +80,6 @@ Header and library files for Magics - The library and tools to visualize meteoro
 %patch1
 %patch2
 %patch3
-%patch4
 
 %build
 
@@ -153,6 +151,9 @@ popd
 %{_libdir}/cmake/magics
 
 %changelog
+* Fri Oct  1 2021 Daniele Branchini <dbranchini@arpae.it> - 4.9.1-1
+- Version 4.9.1
+
 * Tue Jun  8 2021 Daniele Branchini <dbranchini@arpae.it> - 4.8.0-2
 - added dladdr patch (#15)
 
