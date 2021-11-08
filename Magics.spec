@@ -41,6 +41,7 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-numpy
 BuildRequires:  python3-jinja2
 BuildRequires:  openjpeg2-devel
+BuildRequires:  chrpath
 
 %description
 Runtime files for Magics - 
@@ -118,6 +119,7 @@ popd
 rm -rf $RPM_BUILD_ROOT
 pushd build
 %make_install
+chrpath --delete $RPM_BUILD_ROOT%{_libdir}/*.so*
 
 # TODO: magics.pc is now missing
 # remove rpath
