@@ -1,4 +1,4 @@
-%global releaseno 1
+%global releaseno 2
 
 Name:           Magics
 Version:        4.9.3
@@ -153,6 +153,9 @@ popd
 %{_libdir}/cmake/magics
 
 %changelog
+* Mon Nov  8 2021 Emanuele Di Giacomo <edigiacomo@arpae.it> - 4.9.3-2
+- Remove rpath
+
 * Tue Oct  5 2021 Daniele Branchini <dbranchini@arpae.it> - 4.9.3-1
 - Version 4.9.3
 
