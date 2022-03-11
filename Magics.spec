@@ -1,11 +1,12 @@
-%global releaseno 2
+%global releaseno 1
 
 Name:           Magics
-Version:        4.9.3
+Version:        4.11.0
 Release:        %{releaseno}%{dist}
 Summary:        Library and tools to visualize meteorological data and statistics
 URL:            http://www.ecmwf.int/products/data/software/magics++.html
-Source0:        https://software.ecmwf.int/wiki/download/attachments/3473464/%{name}-%{version}-Source.tar.gz
+Source0:        https://confluence.ecmwf.int/download/attachments/3473464/%{name}-%{version}-Source.tar.gz
+
 Patch0:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-fix-warnings.patch
 Patch1:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-rm-ksh.patch
 Patch2:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-fix-shebangs.patch
@@ -153,6 +154,9 @@ popd
 %{_libdir}/cmake/magics
 
 %changelog
+* Thu Mar 10 2022 Daniele Branchini <dbranchini@arpae.it> - 4.11.0-1
+- Version 4.11.0
+
 * Mon Nov  8 2021 Emanuele Di Giacomo <edigiacomo@arpae.it> - 4.9.3-2
 - Remove rpath
 
