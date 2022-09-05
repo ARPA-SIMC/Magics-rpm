@@ -91,9 +91,12 @@ pushd build
 # libgeotiff include in CXX_FLAGS should be removed once the DGEOTIFF_INCLUDE_DIR variable is fixed
 # (see: https://jira.ecmwf.int/browse/SUP-3299)
 
+# -D_GLIBCXX_ASSERTIONS has been added in F36/gcc12 and impacts on tests
+# (see: https://jira.ecmwf.int/browse/SUP-3693)
+
 cmake .. \
     -DCMAKE_PREFIX_PATH=%{_prefix} \
-    -DCMAKE_CXX_FLAGS="$CXXFLAGS -I/usr/include/libgeotiff" \
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS -U_GLIBCXX_ASSERTIONS -I/usr/include/libgeotiff" \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
     -DCMAKE_INSTALL_MESSAGE=NEVER \
     -DBUILD_SHARED_LIBS=ON \
