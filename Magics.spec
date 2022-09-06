@@ -1,4 +1,4 @@
-%global releaseno 2
+%global releaseno 3
 
 Name:           Magics
 Version:        4.11.0
@@ -88,13 +88,14 @@ Header and library files for Magics - The library and tools to visualize meteoro
 
 %build
 
-mkdir build
-pushd build
+%if 0%{?el8}
+# In EPEL-8 the builds are made in-source
+%undefine __cmake_in_source_build
+%endif
 
 # libgeotiff include in CXX_FLAGS should be removed once the DGEOTIFF_INCLUDE_DIR variable is fixed
 # (see: https://jira.ecmwf.int/browse/SUP-3299)
-
-cmake .. \
+%cmake \
     -DCMAKE_PREFIX_PATH=%{_prefix} \
     -DCMAKE_CXX_FLAGS="$CXXFLAGS -I/usr/include/libgeotiff" \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
@@ -108,20 +109,16 @@ cmake .. \
     -DGEOTIFF_INCLUDE_DIR=/usr/include/libgeotiff \
     -DENABLE_ODB=OFF
 
-%{make_build}
-popd
+%cmake_build
 
 %check
-pushd build
 # MAGPLUS_HOME is needed for the tests to work, see:
 # https://software.ecmwf.int/wiki/display/MAGP/Installation+Guide
-MAGPLUS_HOME=%{buildroot} CTEST_OUTPUT_ON_FAILURE=1 LD_LIBRARY_PATH=%{buildroot}%{_libdir} ctest --verbose
-popd
+MAGPLUS_HOME=%{buildroot} CTEST_OUTPUT_ON_FAILURE=1 LD_LIBRARY_PATH=%{buildroot}%{_libdir} %ctest --verbose
 
 %install
 rm -rf $RPM_BUILD_ROOT
-pushd build
-%make_install
+%cmake_install
 chrpath --delete $RPM_BUILD_ROOT%{_libdir}/*.so*
 
 # TODO: magics.pc is now missing
@@ -137,7 +134,6 @@ do
     ln -s $l.3.0.0 $l.3
     ln -s $l.3.0.0 $l
 done
-
 popd
 
 
@@ -156,6 +152,9 @@ popd
 %{_libdir}/cmake/magics
 
 %changelog
+* Tue Sep  6 2022 Emanuele Di Giacomo <edigiacomo@arpae.it> - 4.11.0-3
+- Cmake macros
+
 * Tue Sep  6 2022 Daniele Branchini <dbranchini@arpae.it> - 4.11.0-2
 - Patch for compiling with GLIBCXX_ASSERTIONS
 
