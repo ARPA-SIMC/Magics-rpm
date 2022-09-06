@@ -1,5 +1,4 @@
 [![Build Status](https://simc.arpae.it/moncic-ci/Magics-rpm/centos8.png)](https://simc.arpae.it/moncic-ci/Magics-rpm/)
-[![Build Status](https://simc.arpae.it/moncic-ci/Magics-rpm/fedora34.png)](https://simc.arpae.it/moncic-ci/Magics-rpm/)
 [![Build Status](https://simc.arpae.it/moncic-ci/Magics-rpm/fedora36.png)](https://simc.arpae.it/moncic-ci/Magics-rpm/)
 [![Build Status](https://copr.fedorainfracloud.org/coprs/simc/stable/package/Magics/status_image/last_build.png)](https://copr.fedorainfracloud.org/coprs/simc/stable/package/Magics/)
 
