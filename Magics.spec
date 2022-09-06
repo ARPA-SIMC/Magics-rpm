@@ -1,4 +1,4 @@
-%global releaseno 2
+%global releaseno 3
 
 Name:           Magics
 Version:        4.11.0
@@ -152,6 +152,9 @@ popd
 %{_libdir}/cmake/magics
 
 %changelog
+* Tue Sep  6 2022 Emanuele Di Giacomo <edigiacomo@arpae.it> - 4.11.0-3
+- Cmake macros
+
 * Tue Sep  6 2022 Daniele Branchini <dbranchini@arpae.it> - 4.11.0-2
 - Patch for compiling with GLIBCXX_ASSERTIONS
 
