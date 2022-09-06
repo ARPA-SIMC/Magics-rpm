@@ -1,0 +1,20 @@
+--- src/visualisers/IsoPlot.cc.orig	2022-09-06 10:31:54.138514887 +0200
++++ src/visualisers/IsoPlot.cc	2022-09-06 10:33:02.516228835 +0200
+@@ -1677,7 +1677,7 @@
+         double missing = data.missing();
+ 
+ 
+-        int i = 0;
++        auto i = points_.begin();
+ 
+         MagLog::dev() << "min = " << data.min() << "  max = " << data.max() << endl;
+         for (vector<std::pair<double, double> >::iterator xy = xypoints.begin(); xy != xypoints.end(); ++xy) {
+@@ -1701,7 +1701,7 @@
+             else {
+                 // cout << "MISSING VALUE-->" << geo->second << ", " << geo->first << endl;
+             }
+-            points_[i] = value;
++            points_.insert(i, value);
+             i++;
+             ++geo;
+         }

@@ -1,4 +1,4 @@
-%global releaseno 1
+%global releaseno 2
 
 Name:           Magics
 Version:        4.11.0
@@ -12,6 +12,8 @@ Patch1:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{versio
 Patch2:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-fix-shebangs.patch
 # https://github.com/ARPA-SIMC/Magics-rpm/issues/15
 Patch3:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-ignore-dladdr-for-share-folder.patch
+# https://jira.ecmwf.int/browse/SUP-3693
+Patch4:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-fix-vector-access.patch
 License:        Apache License, Version 2.0
 
 BuildRequires:  gcc-c++
@@ -82,6 +84,7 @@ Header and library files for Magics - The library and tools to visualize meteoro
 %patch1
 %patch2
 %patch3
+%patch4
 
 %build
 
@@ -91,12 +94,9 @@ pushd build
 # libgeotiff include in CXX_FLAGS should be removed once the DGEOTIFF_INCLUDE_DIR variable is fixed
 # (see: https://jira.ecmwf.int/browse/SUP-3299)
 
-# -D_GLIBCXX_ASSERTIONS has been added in F36/gcc12 and impacts on tests
-# (see: https://jira.ecmwf.int/browse/SUP-3693)
-
 cmake .. \
     -DCMAKE_PREFIX_PATH=%{_prefix} \
-    -DCMAKE_CXX_FLAGS="$CXXFLAGS -U_GLIBCXX_ASSERTIONS -I/usr/include/libgeotiff" \
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS -I/usr/include/libgeotiff" \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
     -DCMAKE_INSTALL_MESSAGE=NEVER \
     -DBUILD_SHARED_LIBS=ON \
@@ -108,7 +108,6 @@ cmake .. \
     -DGEOTIFF_INCLUDE_DIR=/usr/include/libgeotiff \
     -DENABLE_ODB=OFF
 
-
 %{make_build}
 popd
 
@@ -116,7 +115,7 @@ popd
 pushd build
 # MAGPLUS_HOME is needed for the tests to work, see:
 # https://software.ecmwf.int/wiki/display/MAGP/Installation+Guide
-MAGPLUS_HOME=%{buildroot} CTEST_OUTPUT_ON_FAILURE=1 LD_LIBRARY_PATH=%{buildroot}%{_libdir} ctest
+MAGPLUS_HOME=%{buildroot} CTEST_OUTPUT_ON_FAILURE=1 LD_LIBRARY_PATH=%{buildroot}%{_libdir} ctest --verbose
 popd
 
 %install
@@ -157,6 +156,9 @@ popd
 %{_libdir}/cmake/magics
 
 %changelog
+* Tue Sep  6 2022 Daniele Branchini <dbranchini@arpae.it> - 4.11.0-2
+- Patch for compiling with GLIBCXX_ASSERTIONS
+
 * Thu Mar 10 2022 Daniele Branchini <dbranchini@arpae.it> - 4.11.0-1
 - Version 4.11.0
 
