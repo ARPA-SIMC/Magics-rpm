@@ -18,3 +18,13 @@
              i++;
              ++geo;
          }
+--- src/decoders/GribRegularInterpretor.cc.orig	2022-09-26 14:45:59.835350557 +0200
++++ src/decoders/GribRegularInterpretor.cc	2022-09-26 14:48:54.808490952 +0200
+@@ -1546,6 +1546,7 @@
+         else  // otherwise, just copy the array of values as they are
+         {
+             if (v != NULL) {
++                v->resize(aux);
+                 grib_get_double_array(grib.uHandle(), "values", &u->front(), &aux);
+                 grib_get_double_array(grib.uHandle(), "values", &u->data_.front(), &aux);
+                 grib_get_double_array(grib.vHandle(), "values", &v->front(), &aux);
