@@ -1,4 +1,4 @@
-%global releaseno 3
+%global releaseno 4
 
 Name:           Magics
 Version:        4.11.0
@@ -13,6 +13,7 @@ Patch2:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{versio
 # https://github.com/ARPA-SIMC/Magics-rpm/issues/15
 Patch3:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-ignore-dladdr-for-share-folder.patch
 # https://jira.ecmwf.int/browse/SUP-3693
+# https://github.com/ARPA-SIMC/Magics-rpm/issues/18
 Patch4:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-fix-vector-access.patch
 License:        Apache License, Version 2.0
 
@@ -152,6 +153,9 @@ popd
 %{_libdir}/cmake/magics
 
 %changelog
+* Mon Sep 26 2022 Emanuele Di Giacomo <edigiacomo@arpae.it> - 4.11.0-4
+- Fix rutime error raised by magics::GribRotatedInterpretor::interpretAsMatrix (#18)
+
 * Tue Sep  6 2022 Emanuele Di Giacomo <edigiacomo@arpae.it> - 4.11.0-3
 - Cmake macros
 
