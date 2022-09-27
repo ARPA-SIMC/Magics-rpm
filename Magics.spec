@@ -1,4 +1,4 @@
-%global releaseno 4
+%global releaseno 5
 
 Name:           Magics
 Version:        4.11.0
@@ -153,8 +153,11 @@ popd
 %{_libdir}/cmake/magics
 
 %changelog
+* Tue Sep 27 2022 Emanuele Di Giacomo <edigiacomo@arpae.it> - 4.11.0-5
+- Fix another runtime error raised by magics::GribRotatedInterpretor::interpretAsMatrix (#18)
+
 * Mon Sep 26 2022 Emanuele Di Giacomo <edigiacomo@arpae.it> - 4.11.0-4
-- Fix rutime error raised by magics::GribRotatedInterpretor::interpretAsMatrix (#18)
+- Fix runtime error raised by magics::GribRotatedInterpretor::interpretAsMatrix (#18)
 
 * Tue Sep  6 2022 Emanuele Di Giacomo <edigiacomo@arpae.it> - 4.11.0-3
 - Cmake macros
