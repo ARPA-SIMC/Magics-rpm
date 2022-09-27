@@ -28,3 +28,13 @@
                  grib_get_double_array(grib.uHandle(), "values", &u->front(), &aux);
                  grib_get_double_array(grib.uHandle(), "values", &u->data_.front(), &aux);
                  grib_get_double_array(grib.vHandle(), "values", &v->front(), &aux);
+--- src/decoders/GribRegularInterpretor.cc.orig	2022-09-27 08:36:22.875734037 +0200
++++ src/decoders/GribRegularInterpretor.cc	2022-09-27 08:36:45.993673168 +0200
+@@ -581,6 +581,7 @@
+         else  // otherwise, just copy the array of values as they are
+         {
+             if (v != NULL) {
++                v->resize(nb);
+                 grib_get_double_array(grib.uHandle(), "values", &u->front(), &aux);
+                 grib_get_double_array(grib.uHandle(), "values", &u->data_.front(), &aux);
+                 grib_get_double_array(grib.vHandle(), "values", &v->front(), &aux);
