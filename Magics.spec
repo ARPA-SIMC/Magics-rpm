@@ -1,4 +1,4 @@
-%global releaseno 5
+%global releaseno 6
 
 Name:           Magics
 Version:        4.11.0
@@ -153,6 +153,9 @@ popd
 %{_libdir}/cmake/magics
 
 %changelog
+* Mon May 22 2023 Emanuele Di Giacomo <edigiacomo@arpae.it> - 4.11.0-6
+- Use python3 instead of python2 in magics-fix-shebangs.patch
+
 * Tue Sep 27 2022 Emanuele Di Giacomo <edigiacomo@arpae.it> - 4.11.0-5
 - Fix another runtime error raised by magics::GribRotatedInterpretor::interpretAsMatrix (#18)
 
