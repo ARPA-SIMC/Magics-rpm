@@ -9,7 +9,7 @@
 This github repository neither hosts nor provide Magics sources, it's meant to
 host (unofficial) convenience files for Fedora and CentOs rpm packaging.
 
-See https://software.ecmwf.int/wiki/display/MAGP/Magics
+See https://confluence.ecmwf.int/display/MAGP/Magics
 
 Patches are adapted from debian package.
 For more info see: https://tracker.debian.org/pkg/magics++
