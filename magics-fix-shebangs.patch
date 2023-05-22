@@ -2,7 +2,7 @@
 +++ tools/magicsCompatibilityChecker
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
-+#!/usr/bin/python2
++#!/usr/bin/python3
  #
  # Copyright 2011 European Centre for Medium-Range Weather Forecasts (ECMWF)
  # 
