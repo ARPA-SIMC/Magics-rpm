@@ -1,4 +1,4 @@
-%global releaseno 6
+%global releaseno 7
 
 Name:           Magics
 Version:        4.11.0
@@ -152,6 +152,9 @@ popd
 %{_libdir}/cmake/magics
 
 %changelog
+* Wed Jun 22 2023 Emanuele Di Giacomo <edigiacomo@arpae.it> - 4.11.0-7
+- Removed libemos from dependencies
+
 * Mon May 22 2023 Emanuele Di Giacomo <edigiacomo@arpae.it> - 4.11.0-6
 - Use python3 instead of python2 in magics-fix-shebangs.patch
 
