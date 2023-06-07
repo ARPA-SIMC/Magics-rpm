@@ -31,7 +31,6 @@ BuildRequires:  eccodes-devel
 BuildRequires:  cairo-devel
 BuildRequires:  pango-devel
 BuildRequires:  eccodes-data
-BuildRequires:  libemos
 BuildRequires:  pkgconfig
 BuildRequires:  expat-devel
 BuildRequires:  netcdf-devel
