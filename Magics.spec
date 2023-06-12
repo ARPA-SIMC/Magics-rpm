@@ -156,7 +156,7 @@ popd
 * Mon Jun 12 2023 Emanuele Di Giacomo <edigiacomo@arpae.it> - 4.11.0-8
 - Fix another runtime error raised by magics::GribRotatedInterpretor::interpretAsMatrix (#19)
 
-* Wed Jun 22 2023 Emanuele Di Giacomo <edigiacomo@arpae.it> - 4.11.0-7
+* Wed Jun  7 2023 Emanuele Di Giacomo <edigiacomo@arpae.it> - 4.11.0-7
 - Removed libemos from dependencies
 
 * Mon May 22 2023 Emanuele Di Giacomo <edigiacomo@arpae.it> - 4.11.0-6
