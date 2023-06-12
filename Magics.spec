@@ -14,6 +14,7 @@ Patch2:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{versio
 Patch3:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-ignore-dladdr-for-share-folder.patch
 # https://jira.ecmwf.int/browse/SUP-3693
 # https://github.com/ARPA-SIMC/Magics-rpm/issues/18
+# https://github.com/ARPA-SIMC/Magics-rpm/issues/19
 Patch4:         https://raw.githubusercontent.com/ARPA-SIMC/Magics-rpm/v%{version}-%{releaseno}/magics-fix-vector-access.patch
 License:        Apache License, Version 2.0
 
