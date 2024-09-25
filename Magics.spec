@@ -1,4 +1,4 @@
-%global releaseno 1
+%global releaseno 2
 
 Name:           Magics
 Version:        4.14.2
@@ -154,6 +154,9 @@ popd
 %{_libdir}/cmake/magics
 
 %changelog
+* Wed Sep 25 2024 Daniele Branchini <dbranchini@arpae.it> - 4.14.2-2
+- Disable incompatible-pointer-types warning
+
 * Fri Oct 13 2023 Emanuele Di Giacomo <edigiacomo@arpae.it> - 4.14.2-1
 - Version 4.14.2
 

@@ -1,7 +1,7 @@
 [![Build Status](https://simc.arpae.it/moncic-ci/Magics-rpm/rocky8.png)](https://simc.arpae.it/moncic-ci/Magics-rpm/)
 [![Build Status](https://simc.arpae.it/moncic-ci/Magics-rpm/rocky9.png)](https://simc.arpae.it/moncic-ci/Magics-rpm/)
-[![Build Status](https://simc.arpae.it/moncic-ci/Magics-rpm/fedora36.png)](https://simc.arpae.it/moncic-ci/Magics-rpm/)
 [![Build Status](https://simc.arpae.it/moncic-ci/Magics-rpm/fedora38.png)](https://simc.arpae.it/moncic-ci/Magics-rpm/)
+[![Build Status](https://simc.arpae.it/moncic-ci/Magics-rpm/fedora40.png)](https://simc.arpae.it/moncic-ci/Magics-rpm/)
 [![Build Status](https://copr.fedorainfracloud.org/coprs/simc/stable/package/Magics/status_image/last_build.png)](https://copr.fedorainfracloud.org/coprs/simc/stable/package/Magics/)
 
 # rpm packaging files for Magics
