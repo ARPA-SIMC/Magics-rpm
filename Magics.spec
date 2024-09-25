@@ -98,6 +98,7 @@ Header and library files for Magics - The library and tools to visualize meteoro
 # (see: https://jira.ecmwf.int/browse/SUP-3299)
 %cmake \
     -DCMAKE_PREFIX_PATH=%{_prefix} \
+    -DCMAKE_C_FLAGS="$CFLAGS -Wno-incompatible-pointer-types" \
     -DCMAKE_CXX_FLAGS="$CXXFLAGS -I/usr/include/libgeotiff" \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
     -DCMAKE_INSTALL_MESSAGE=NEVER \
