@@ -1,4 +1,4 @@
-%global releaseno 2
+%global releaseno 3
 
 Name:           Magics
 Version:        4.14.2
@@ -81,11 +81,22 @@ Header and library files for Magics - The library and tools to visualize meteoro
 
 %prep
 %setup -q -n %{name}-%{version}-Source
+
+# patching syntax changed
+%if 0%{?rhel}
 %patch0
 %patch1
 %patch2
 %patch3
 %patch4
+%else
+%patch 0
+%patch 1
+%patch 2
+%patch 3
+%patch 4
+%endif
+
 
 %build
 
@@ -154,6 +165,9 @@ popd
 %{_libdir}/cmake/magics
 
 %changelog
+* Mon Jun 16 2025 Daniele Branchini <dbranchini@arpae.it> - 4.14.2-3
+- Fixed patch syntax for f42
+
 * Wed Sep 25 2024 Daniele Branchini <dbranchini@arpae.it> - 4.14.2-2
 - Disable incompatible-pointer-types warning
 
