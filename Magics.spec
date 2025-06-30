@@ -91,12 +91,14 @@ Header and library files for Magics - The library and tools to visualize meteoro
 %patch2
 %patch3
 %patch4
+%patch5
 %else
 %patch 0
 %patch 1
 %patch 2
 %patch 3
 %patch 4
+%patch 5
 %endif
 
 
