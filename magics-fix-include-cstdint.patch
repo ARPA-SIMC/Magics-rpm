@@ -1,0 +1,10 @@
+--- src/common/ObjectParser.cc.orig	2025-06-30 08:58:00.647580121 +0200
++++ src/common/ObjectParser.cc	2025-06-30 08:58:16.361444093 +0200
+@@ -15,6 +15,7 @@
+ 
+ #include <codecvt>
+ #include <locale>
++#include <cstdint>
+ 
+ #include "ObjectParser.h"
+ #include "Translator.h"
