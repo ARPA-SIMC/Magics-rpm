@@ -1,4 +1,4 @@
-%global releaseno 3
+%global releaseno 4
 
 Name:           Magics
 Version:        4.14.2
@@ -169,6 +169,9 @@ popd
 %{_libdir}/cmake/magics
 
 %changelog
+* Tue Sep  2 2025 Daniele Branchini <dbranchini@arpae.it> - 4.14.2-4
+- Add cstdint include (#22)
+
 * Mon Jun 16 2025 Daniele Branchini <dbranchini@arpae.it> - 4.14.2-3
 - Fixed patch syntax for f42
 
