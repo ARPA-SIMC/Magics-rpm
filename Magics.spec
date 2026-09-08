@@ -1,4 +1,4 @@
-%global releaseno 1
+%global releaseno 2
 
 Name:           Magics
 Version:        4.16.0
@@ -115,6 +115,7 @@ Header and library files for Magics - The library and tools to visualize meteoro
     -DCMAKE_PREFIX_PATH=%{_prefix} \
     -DCMAKE_C_FLAGS="$CFLAGS -Wno-incompatible-pointer-types" \
     -DCMAKE_CXX_FLAGS="$CXXFLAGS -I/usr/include/libgeotiff" \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
     -DCMAKE_INSTALL_MESSAGE=NEVER \
     -DBUILD_SHARED_LIBS=ON \
@@ -169,6 +170,9 @@ popd
 %{_libdir}/cmake/magics
 
 %changelog
+* Tue Sep 08 2026 Daniele Branchini  <dbranchini@arpae.it> - 4.16.0-2
+- added CMAKE_POLICY_VERSION_MINIMUM for fedora 44 (cmake 4.3)
+
 * Fri Feb 06 2026 Daniele Branchini  <dbranchini@arpae.it> - 4.16.0-1
 - Version 4.16.0
 
